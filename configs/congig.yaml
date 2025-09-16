@@ -1,0 +1,18 @@
+# configs/config.yaml
+model_path: "models/model.joblib"
+preprocess_path: "models/preprocess.joblib"
+alert_log: "logs/alerts.jsonl"
+detection_threshold: 0.5        # probability threshold for raising an alert
+pcap_sample: "data/raw/sample.pcap"
+capture_iface: "eth0"
+flow_timeout: 60                # seconds of inactivity before closing flow
+feature_names:                   # must match the columns used for training
+  - duration
+  - packet_count
+  - total_bytes
+  - mean_pkt_len
+  - std_pkt_len
+  - pkt_rate
+  - protocol
+  - src_port
+  - dst_port
