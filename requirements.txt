@@ -9,3 +9,4 @@ scapy
 pyshark
 streamlit
 pyyaml
+plotly
