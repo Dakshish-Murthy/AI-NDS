@@ -52,7 +52,6 @@ Phase 2 – Feature Engineering & Capture	Extracted real-time network traffic us
 Phase 3 – Model Training	Trained Random Forest achieving 99.9% accuracy; saved as .joblib.	✅ Completed
 Phase 4 – Real-Time Detection	Captured live packets → Extracted features → Predicted normal/intrusion in real-time.	✅ Completed
 Phase 5 – Visualization	Developed an advanced Streamlit dashboard with alerts, charts, and logs.	✅ Completed
-
 🧰 Tech Stack
 Category	Tools / Libraries
 Programming Language	Python 3.11
@@ -63,10 +62,8 @@ Visualization	Streamlit, Plotly
 Serialization	Joblib
 OS / Platform	Windows / Linux
 Version Control	Git & GitHub
-
 📁 Project Structure
-bash
-Copy code
+text
 AI-NDS/
 │
 ├── data/
@@ -96,42 +93,45 @@ AI-NDS/
 🛠️ Setup & Usage
 1️⃣ Clone the repository
 bash
-Copy code
 git clone https://github.com/Dakshish-Murthy/AI-NDS.git
 cd AI-NDS
 2️⃣ Create & activate a virtual environment
 bash
-Copy code
+# Windows
 python -m venv .venv
-.venv\Scripts\activate      # (Windows)
-source .venv/bin/activate   # (Linux/Mac)
+.venv\Scripts\activate
+
+# Linux/Mac
+python -m venv .venv
+source .venv/bin/activate
 3️⃣ Install dependencies
 bash
-Copy code
 pip install -r requirements.txt
 4️⃣ Train the Model (Optional)
 bash
-Copy code
 python src/training/train_model.py
 5️⃣ Capture Network Packets
 bash
-Copy code
 python src/realtime/capture.py
 6️⃣ Run Real-Time Detection
 bash
-Copy code
 python src/realtime/live_monitor.py
 7️⃣ Launch Dashboard
 bash
-Copy code
 streamlit run src/dashboard/app.py
 📊 Dashboard Features
 🧠 Real-Time AI Detection – Instantly classifies network packets.
+
 📈 Traffic Visualizations – Pie & line charts for traffic trends.
+
 🚨 Animated Intrusion Alerts – Blinking red alert bar with beep sound.
+
 ✅ Dismissable Alerts – One-click acknowledgment of detected threats.
+
 🕒 Alert History Log – Chronological record of past intrusions.
+
 🎨 Modern UI – Dark theme, live dot animation, responsive layout.
+
 🔄 Auto Refresh – Updates automatically every few seconds.
 
 📈 Model Performance
@@ -140,13 +140,11 @@ Accuracy	99.89%
 Precision	99.80%
 Recall	99.83%
 F1-Score	99.81%
-
-Achieved using the CIC-IDS-2018 Dataset (processed 2.8M flows).
+*Achieved using the CIC-IDS-2018 Dataset (processed 2.8M flows).*
 
 📸 Sample Outputs
 💻 Live Console (Real-Time Monitor)
 yaml
-Copy code
 [2025-11-12 15:10:23] ✅ Normal: 10.0.3.0 → 8.8.8.8
 [2025-11-12 15:10:27] ⚠️ Intrusion: 10.0.3.0 → 172.64.41.3
 🧾 Streamlit Dashboard
@@ -156,7 +154,7 @@ Copy code
 
 🕓 Historical log of all alerts
 
-💚 “No Intrusions Detected” success box when safe
+💚 "No Intrusions Detected" success box when safe
 
 🧩 System Workflow
 Packet Capture: Sniffs live packets using Scapy.
@@ -175,7 +173,6 @@ Dataset	CIC-IDS-2018	4.1M records processed
 ML Model	Random Forest	High accuracy, low latency
 Real-Time Monitor	Python (Scapy + PyShark)	0.2s per flow
 Dashboard	Streamlit + Plotly	Fully responsive & live updates
-
 🔮 Future Scope
 🧩 Integration with Firewall or Router (auto-block malicious IPs)
 
