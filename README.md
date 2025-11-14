@@ -1,8 +1,8 @@
 # 🧠 AI-NDS – AI-Based Network Intrusion Detection System
 
-> **A Real-Time Artificial Intelligence Powered Network Intrusion Detection System (NIDS)**  
+> **A Real-Time Machine Learning Powered Network Intrusion Detection System (NIDS)**  
 > Designed to analyze live network traffic, detect anomalies, and visualize results instantly  
-> using Machine Learning, Data Analytics, Networking, and Cybersecurity principles.
+> using Artificial Intelligence, Data Analytics, and Cybersecurity principles.
 
 ---
 
@@ -16,226 +16,173 @@
 7. [Dashboard Features](#-dashboard-features)
 8. [Model Performance](#-model-performance)
 9. [Sample Outputs](#-sample-outputs)
-10. [System Workflow](#-system-workflow)
-11. [Results Summary](#-results-summary)
-12. [Future Scope](#-future-scope)
-13. [Author](#-author)
-14. [License](#-license)
+10. [Future Scope](#-future-scope)
+11. [Author](#-author)
+12. [License](#-license)
 
 ---
 
 ## 🌐 **Overview**
 
-The **AI-NDS (Artificial Intelligence – Network Detection System)** is a fully functional  
-**real-time cybersecurity system** that automatically detects malicious or anomalous network activity.
+The **AI-NDS (Artificial Intelligence – Network Detection System)** is a **real-time cybersecurity project** built to automatically detect malicious or anomalous network activities.
 
-It integrates:
-- 🚀 **Machine Learning (Random Forest, XGBoost)**
-- 🔍 **Real-time packet sniffing (Scapy/PyShark)**
-- 📊 **A professional Streamlit dashboard**
-- 🛡️ **Live intrusion alerting system**
+It leverages **Machine Learning (Random Forest, XGBoost)** models trained on the **CIC-IDS-2018 dataset**, and integrates **real-time packet capture** with a **Streamlit-powered dashboard** for live monitoring, visualization, and alerting.
 
-### 🎯 **Project Goals**
-- Detect intrusions (DoS, DDoS, infiltration, brute-force attacks).
-- Capture and process live network packets.
-- Match extracted features with CIC-IDS-2018 dataset schema.
-- Provide real-time analytics using an interactive dashboard.
+### 🎯 **Objectives**
+- Detect network intrusions using AI-based classification.  
+- Capture and process live packet data in real time.  
+- Visualize and alert suspicious activity dynamically.  
+- Provide a scalable, modular, and modern NIDS architecture.
 
 ---
 
 ## 🏗️ **Project Architecture**
 
-┌────────────┐ ┌────────────────────┐ ┌──────────────────┐ ┌────────────────────┐
-│ Packet │ │ Feature Extraction │ │ ML Inference │ │ Streamlit │
-│ Capture ├──▶──┤ & Preprocessing ├──▶──┤ (Random Forest) ├──▶───┤ Live Dashboard │
-└────────────┘ └────────────────────┘ └──────────────────┘ └────────────────────┘
-▲ │ │
-└─────────── Continuous Real-Time Monitoring & Alerting ───────────────────┘
+```text
+┌────────────┐     ┌────────────────────┐     ┌────────────────┐     ┌──────────────────┐
+│  Packet    │     │  Feature Extraction│     │ Machine Learning│     │  Visualization   │
+│  Capture   ├──▶──┤  & Preprocessing   ├──▶──┤ Model Inference │──▶──┤  Dashboard (UI) │
+└────────────┘     └────────────────────┘     └────────────────┘     └──────────────────┘
+        ↑                                                              │
+        └───────────── Continuous Real-Time Monitoring ────────────────┘
+⚙️ Implementation Phases
+Phase	Description	Status
+Phase 1 – Dataset Preparation	Collected, cleaned, and preprocessed CIC-IDS-2018 dataset.	✅ Completed
+Phase 2 – Feature Engineering & Capture	Extracted real-time network traffic using Scapy/PyShark matching the training schema.	✅ Completed
+Phase 3 – Model Training	Trained Random Forest achieving 99.9% accuracy; saved as .joblib.	✅ Completed
+Phase 4 – Real-Time Detection	Captured live packets → Extracted features → Predicted normal/intrusion in real-time.	✅ Completed
+Phase 5 – Visualization	Developed an advanced Streamlit dashboard with alerts, charts, and logs.	✅ Completed
 
-yaml
+🧰 Tech Stack
+Category	Tools / Libraries
+Programming Language	Python 3.11
+Data Handling	Pandas, NumPy
+Machine Learning	Scikit-learn, XGBoost
+Networking	Scapy, PyShark
+Visualization	Streamlit, Plotly
+Serialization	Joblib
+OS / Platform	Windows / Linux
+Version Control	Git & GitHub
+
+📁 Project Structure
+bash
 Copy code
-
----
-
-## ⚙️ **Implementation Phases**
-
-| Phase | Description | Status |
-|------|-------------|--------|
-| **Phase 1 – Dataset Preparation** | Cleaned & preprocessed CIC-IDS-2018 dataset | ✅ Completed |
-| **Phase 2 – Feature Engineering** | Real-time packet feature extraction aligned with dataset schema | ✅ Completed |
-| **Phase 3 – Model Training** | Random Forest & XGBoost (99.9% accuracy) | ✅ Completed |
-| **Phase 4 – Real-Time Detection** | Live packet capture → feature extraction → prediction | ✅ Completed |
-| **Phase 5 – Visualization** | Interactive Streamlit dashboard | ✅ Completed |
-
----
-
-## 🧰 **Tech Stack**
-
-| Category | Tools |
-|----------|--------|
-| Programming Language | Python 3.11 |
-| Data Handling | Pandas, NumPy |
-| Machine Learning | Scikit-learn, XGBoost |
-| Networking | Scapy, PyShark |
-| Visualization | Streamlit, Plotly |
-| Serialization | Joblib |
-| Platform | Windows / Linux |
-| Version Control | Git & GitHub |
-
----
-
-## 📁 **Project Structure**
-
 AI-NDS/
 │
 ├── data/
-│ ├── cic_ids_2018.csv # Cleaned dataset
-│ ├── sample_flow.csv # Output of packet capture
-│ └── realtime_log.csv # Live alert logs for dashboard
+│   ├── cic_ids_2018.csv                 # Cleaned dataset
+│   ├── sample_flow.csv                  # Packet capture output
+│   └── realtime_log.csv                 # Log file for dashboard
 │
 ├── models/
-│ ├── cic_ids2018_model.joblib # Trained ML model
-│ └── cic_ids2018_preprocess.joblib # Preprocessing pipeline
+│   ├── cic_ids2018_model.joblib         # Trained ML model
+│   └── cic_ids2018_preprocess.joblib    # Preprocessing pipeline
 │
 ├── src/
-│ ├── training/
-│ │ └── train_model.py # Model training + evaluation
-│ │
-│ ├── realtime/
-│ │ ├── capture.py # Live packet capture
-│ │ ├── infer.py # Prediction from CSV
-│ │ └── live_monitor.py # Real-time monitoring engine
-│ │
-│ └── dashboard/
-│ └── app.py # Streamlit live dashboard
+│   ├── training/
+│   │   └── train_model.py               # Training + evaluation script
+│   │
+│   ├── realtime/
+│   │   ├── capture.py                   # Live packet sniffing
+│   │   ├── infer.py                     # CSV prediction
+│   │   └── live_monitor.py              # Continuous monitor
+│   │
+│   └── dashboard/
+│       └── app.py                       # Streamlit visualization dashboard
 │
 ├── requirements.txt
 ├── README.md
 └── LICENSE
-
-yaml
+🛠️ Setup & Usage
+1️⃣ Clone the repository
+bash
 Copy code
-
----
-
-## 🛠️ **Setup & Usage**
-
-### **1️⃣ Clone the Repository**
-```bash
 git clone https://github.com/Dakshish-Murthy/AI-NDS.git
 cd AI-NDS
-2️⃣ Create & Activate Virtual Environment
+2️⃣ Create & activate a virtual environment
 bash
 Copy code
 python -m venv .venv
-.venv\Scripts\activate      # Windows
-source .venv/bin/activate   # Linux/Mac
-3️⃣ Install Dependencies
+.venv\Scripts\activate      # (Windows)
+source .venv/bin/activate   # (Linux/Mac)
+3️⃣ Install dependencies
 bash
 Copy code
 pip install -r requirements.txt
-4️⃣ (Optional) Train the Model
+4️⃣ Train the Model (Optional)
 bash
 Copy code
 python src/training/train_model.py
-5️⃣ Capture Live Network Packets
+5️⃣ Capture Network Packets
 bash
 Copy code
 python src/realtime/capture.py
-6️⃣ Run Real-Time Monitoring
+6️⃣ Run Real-Time Detection
 bash
 Copy code
 python src/realtime/live_monitor.py
-7️⃣ Launch Interactive Dashboard
+7️⃣ Launch Dashboard
 bash
 Copy code
 streamlit run src/dashboard/app.py
 📊 Dashboard Features
-🔴 Real-Time Intrusion Alerts
-Blinking red alert bar
-
-Warning sound notification
-
-Dismiss button to acknowledge alerts
-
-📈 Live Traffic Visualizations
-Normal vs Intrusion pie chart
-
-Traffic over time (line chart)
-
-Auto-refresh every few seconds
-
-🧾 Recent Activity Logs
-Last processed packets
-
-IP source/destination
-
-Prediction label
-
-Timestamp
-
-🎨 Modern UI
-Dark theme
-
-Responsive layout
-
-Clean typography
+🧠 Real-Time AI Detection – Instantly classifies network packets.
+📈 Traffic Visualizations – Pie & line charts for traffic trends.
+🚨 Animated Intrusion Alerts – Blinking red alert bar with beep sound.
+✅ Dismissable Alerts – One-click acknowledgment of detected threats.
+🕒 Alert History Log – Chronological record of past intrusions.
+🎨 Modern UI – Dark theme, live dot animation, responsive layout.
+🔄 Auto Refresh – Updates automatically every few seconds.
 
 📈 Model Performance
-Metric	Score
+Metric	Result
 Accuracy	99.89%
 Precision	99.80%
 Recall	99.83%
 F1-Score	99.81%
 
-Achieved using CIC-IDS-2018 (2.8M preprocessed flows).
+Achieved using the CIC-IDS-2018 Dataset (processed 2.8M flows).
 
 📸 Sample Outputs
-💻 Real-Time Console
+💻 Live Console (Real-Time Monitor)
 yaml
 Copy code
 [2025-11-12 15:10:23] ✅ Normal: 10.0.3.0 → 8.8.8.8
 [2025-11-12 15:10:27] ⚠️ Intrusion: 10.0.3.0 → 172.64.41.3
-🧾 Dashboard Visuals
-Live pie & line charts
+🧾 Streamlit Dashboard
+📊 Real-time charts (Normal vs Intrusion)
 
-Alert popup
+🚨 Animated alert with sound + dismiss button
 
-Traffic logs
+🕓 Historical log of all alerts
+
+💚 “No Intrusions Detected” success box when safe
 
 🧩 System Workflow
-Packet Capture
-Sniffs packets using Scapy and PyShark.
+Packet Capture: Sniffs live packets using Scapy.
 
-Feature Extraction
-Converts raw packets into meaningful features (packet length, flags, flows).
+Feature Extraction: Derives 80+ features per flow.
 
-Model Inference
-Predicts whether flow is Normal or Intrusion.
+Model Inference: Uses trained Random Forest model for classification.
 
-Logging
-Writes all results to realtime_log.csv.
+Result Logging: Writes detection output to realtime_log.csv.
 
-Dashboard
-Streamlit reads the log and shows charts + alerts live.
+Dashboard Visualization: Displays traffic stats, alerts, and charts in real-time.
 
 🔬 Results Summary
 Component	Description	Output
 Dataset	CIC-IDS-2018	4.1M records processed
-ML Model	Random Forest	99.9% accuracy
-Real-Time Monitor	Scapy + PyShark	~0.2s latency
-Dashboard	Streamlit + Plotly	Full live analytics
+ML Model	Random Forest	High accuracy, low latency
+Real-Time Monitor	Python (Scapy + PyShark)	0.2s per flow
+Dashboard	Streamlit + Plotly	Fully responsive & live updates
 
 🔮 Future Scope
-🔥 Auto-block malicious IPs via firewall integration
+🧩 Integration with Firewall or Router (auto-block malicious IPs)
 
-🌐 Deploy on cloud platforms (AWS / IBM / Azure)
+☁️ Deployment on Cloud Platforms (AWS / IBM / Azure)
 
-🤖 Upgrade to deep learning (CNN/LSTM-based IDS)
+🤖 Upgrade to Deep Learning (LSTM/CNN) models
 
-📡 Zero-day attack detection
+📡 Expand to detect Zero-Day Attacks using anomaly detection
 
-📁 Exportable PDF/CSV security reports
-
-🛜 Multi-device distributed monitoring
-
+🧾 Exportable alert logs + centralized monitoring server
